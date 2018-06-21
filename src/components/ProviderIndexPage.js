@@ -49,6 +49,9 @@ class ProviderIndexPage extends Component {
             <li key={provider.id}>
               <Link to={`/providers/${provider.id}`}>{provider.name}</Link>
               <br />
+              <button data-id={provider.id}>
+                <Link to={`/providers/update/${provider.id}`}>Edit</Link>
+              </button>
               <button data-id={provider.id} onClick={this.deleteProvider}>
                 Delete
               </button>

@@ -5,6 +5,7 @@ import ProviderIndexPage from "./ProviderIndexPage";
 import ProviderShowPage from "./ProviderShowPage";
 import NavBar from "./NavBar";
 import ProviderNewPage from "./ProviderNewPage";
+import ProviderUpdatePage from "./ProviderUpdatePage";
 
 class App extends Component {
   render() {
@@ -18,6 +19,10 @@ class App extends Component {
             <Route exact path="/providers" component={ProviderIndexPage} />
             <Route exact path="/providers/new" component={ProviderNewPage} />
             <Route exact path="/providers/:id" component={ProviderShowPage} />
+            <Route
+              path="/providers/update/:id"
+              component={ProviderUpdatePage}
+            />
           </Switch>
         </div>
       </Router>

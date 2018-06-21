@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProviderNewForm from "./ProviderNewForm";
+import ProviderForm from "./ProviderForm";
 import Provider from "../requests/provider";
 
 class ProviderNewPage extends Component {
@@ -19,7 +19,7 @@ class ProviderNewPage extends Component {
     return (
       <main className="ProviderNewPage">
         <h2>New Provider</h2>
-        <ProviderNewForm onSubmit={this.createProvider} />
+        <ProviderForm onSubmit={this.createProvider} />
       </main>
     );
   }

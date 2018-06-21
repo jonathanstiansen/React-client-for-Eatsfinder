@@ -18,6 +18,13 @@ export default {
       body: JSON.stringify(params)
     }).then(response => response.json());
   },
+  update(id, params) {
+    return fetch(`${BASE_URL}/providers/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(params)
+    }).then(response => response.json());
+  },
   delete(id) {
     return fetch(`${BASE_URL}/providers/${id}`, {
       method: "DELETE",

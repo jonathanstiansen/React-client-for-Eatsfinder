@@ -52,6 +52,7 @@ class ProviderIndexPage extends Component {
               <button data-id={provider.id}>
                 <Link to={`/providers/update/${provider.id}`}>Edit</Link>
               </button>
+              <br />
               <button data-id={provider.id} onClick={this.deleteProvider}>
                 Delete
               </button>

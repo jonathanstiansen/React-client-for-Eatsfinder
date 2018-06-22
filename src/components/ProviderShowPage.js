@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Provider from "../requests/provider";
 import ProviderDetails from "./ProviderDetails";
+import DishList from "./DishList";
+import { Link } from "react-router-dom";
 
 class ProviderShowPage extends Component {
   constructor(props) {
@@ -10,6 +12,8 @@ class ProviderShowPage extends Component {
       loading: true,
       provider: null
     };
+    this.providerId = this.props.match.params.id;
+    this.deleteProvider = this.deleteProvider.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +25,15 @@ class ProviderShowPage extends Component {
         loading: false
       });
     });
+  }
+
+  deleteProvider() {
+    Provider.delete(this.providerId);
+    this.setState({
+      provider: null
+    });
+
+    this.props.history.push(`/providers`);
   }
 
   render() {
@@ -37,6 +50,11 @@ class ProviderShowPage extends Component {
     return (
       <main className="ProviderShowPage">
         <ProviderDetails {...provider} />
+        <button onClick={this.deleteProvider}>Delete</button>
+        <button>
+          <Link to={`/providers/update/${this.providerId}`}>Edit</Link>
+        </button>
+        <DishList dishes={provider.dishes} />
       </main>
     );
   }

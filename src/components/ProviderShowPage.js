@@ -3,6 +3,7 @@ import Provider from "../requests/provider";
 import ProviderDetails from "./ProviderDetails";
 import DishList from "./DishList";
 import { Link } from "react-router-dom";
+import DishForm from "./DishForm";
 
 class ProviderShowPage extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class ProviderShowPage extends Component {
     };
     this.providerId = this.props.match.params.id;
     this.deleteProvider = this.deleteProvider.bind(this);
+    this.createDish = this.createDish.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +38,17 @@ class ProviderShowPage extends Component {
     this.props.history.push(`/providers`);
   }
 
+  createDish(dishParams) {
+    const { provider } = this.state;
+
+    this.setState({
+      provider: {
+        ...provider,
+        dishes: [dishParams, ...provider.dishes]
+      }
+    });
+  }
+
   render() {
     const { provider, loading } = this.state;
 
@@ -55,6 +68,7 @@ class ProviderShowPage extends Component {
           <Link to={`/providers/update/${this.providerId}`}>Edit</Link>
         </button>
         <DishList dishes={provider.dishes} />
+        <DishForm onSubmit={this.createDish} />
       </main>
     );
   }

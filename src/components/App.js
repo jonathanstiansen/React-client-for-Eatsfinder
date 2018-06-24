@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavBar from "./NavBar";
 import WelcomePage from "./WelcomePage";
 import ProviderIndexPage from "./ProviderIndexPage";
 import ProviderShowPage from "./ProviderShowPage";
-import NavBar from "./NavBar";
 import ProviderNewPage from "./ProviderNewPage";
 import ProviderUpdatePage from "./ProviderUpdatePage";
+import DishIndexPage from "./DishIndexPage";
+import DishShowPage from "./DishShowPage";
 
 class App extends Component {
   render() {
@@ -14,7 +16,8 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Route path="/" component={WelcomePage} />
-
+          <Route exact path="/dishes" component={DishIndexPage} />
+          <Route exact path="/dishes/:id" component={DishShowPage} />
           <Switch>
             <Route exact path="/providers" component={ProviderIndexPage} />
             <Route exact path="/providers/new" component={ProviderNewPage} />

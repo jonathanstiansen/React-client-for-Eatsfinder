@@ -37,7 +37,7 @@ class ProviderIndexPage extends Component {
 
     if (loading) {
       return (
-        <main className="ProviderShowPage">
+        <main className="ProviderIdexPage">
           <h2>Loading...</h2>
         </main>
       );

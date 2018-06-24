@@ -2,7 +2,7 @@ import React from "react";
 import DishDetails from "./DishDetails";
 
 function DishList(props) {
-  const { dishes = [] } = props;
+  const { dishes = [], onDishDeleteClick = () => {} } = props;
   console.log(dishes);
   console.log(props);
 
@@ -10,7 +10,7 @@ function DishList(props) {
     <ul>
       {dishes.map(dish => (
         <li key={dish.id}>
-          <DishDetails {...dish} />
+          <DishDetails {...dish} onDeleteClick={onDishDeleteClick} />
         </li>
       ))}
     </ul>

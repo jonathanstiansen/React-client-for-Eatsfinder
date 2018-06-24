@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Provider from "../requests/provider";
+import { Link } from "react-router-dom";
 import ProviderDetails from "./ProviderDetails";
 import DishList from "./DishList";
-import { Link } from "react-router-dom";
 import DishForm from "./DishForm";
+import Provider from "../requests/provider";
+import Dish from "../requests/dish";
 
 class ProviderShowPage extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class ProviderShowPage extends Component {
     this.providerId = this.props.match.params.id;
     this.deleteProvider = this.deleteProvider.bind(this);
     this.createDish = this.createDish.bind(this);
+    this.deleteDish = this.deleteDish.bind(this);
   }
 
   componentDidMount() {
@@ -41,10 +43,24 @@ class ProviderShowPage extends Component {
   createDish(dishParams) {
     const { provider } = this.state;
 
+    Dish.create(provider.id, dishParams).then(({ id }) => {
+      this.setState({
+        provider: {
+          ...provider,
+          dishes: [dishParams, ...provider.dishes]
+        }
+      });
+    });
+  }
+
+  deleteDish(id) {
+    const { provider } = this.state;
+
+    Dish.delete(id).then(({ id }) => {});
     this.setState({
       provider: {
         ...provider,
-        dishes: [dishParams, ...provider.dishes]
+        dishes: provider.dishes.filter(a => a.id !== id)
       }
     });
   }
@@ -67,7 +83,10 @@ class ProviderShowPage extends Component {
         <button>
           <Link to={`/providers/update/${this.providerId}`}>Edit</Link>
         </button>
-        <DishList dishes={provider.dishes} />
+        <DishList
+          dishes={provider.dishes}
+          onDishDeleteClick={this.deleteDish}
+        />
         <DishForm onSubmit={this.createDish} />
       </main>
     );

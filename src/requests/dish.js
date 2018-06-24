@@ -1,7 +1,7 @@
 import { BASE_URL } from "../config";
 //localhost:3000/v1/providers/134/dishes
 
-http: export default {
+export default {
   all() {
     return fetch(`${BASE_URL}/dishes`, {
       headers: { "Content-Type": "application/json" }

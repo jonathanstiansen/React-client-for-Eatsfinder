@@ -8,6 +8,7 @@ function NavBar(props) {
       <Link to="/dishes">Dishes</Link>
       <Link to="/providers">Providers</Link>
       <Link to="/providers/new">New Provider</Link>
+      <Link to="/user/new">Sign Up</Link>
     </nav>
   );
 }

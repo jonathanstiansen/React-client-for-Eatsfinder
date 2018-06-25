@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import DishDetails from "./DishDetails";
 import Dish from "../requests/dish";
 

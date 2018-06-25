@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProviderNewForm(props) {
+function ProviderForm(props) {
   const { onSubmit = () => {} } = props;
 
   const handleSubmit = event => {
@@ -22,7 +22,7 @@ function ProviderNewForm(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="ProviderNewForm">
+    <form onSubmit={handleSubmit} className="ProviderForm">
       <label htmlFor="name">Name</label>
       <textarea cols="15" rows="1" name="name" defaultValue={props.name} />
       <br />
@@ -68,4 +68,4 @@ function ProviderNewForm(props) {
   );
 }
 
-export default ProviderNewForm;
+export default ProviderForm;

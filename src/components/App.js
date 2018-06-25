@@ -8,6 +8,7 @@ import ProviderNewPage from "./ProviderNewPage";
 import ProviderUpdatePage from "./ProviderUpdatePage";
 import DishIndexPage from "./DishIndexPage";
 import DishShowPage from "./DishShowPage";
+import UserNewPage from "./UserNewPage";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/" component={WelcomePage} />
           <Route exact path="/dishes" component={DishIndexPage} />
           <Route exact path="/dishes/:id" component={DishShowPage} />
+          <Route exact path="/user/new" component={UserNewPage} />
           <Switch>
             <Route exact path="/providers" component={ProviderIndexPage} />
             <Route exact path="/providers/new" component={ProviderNewPage} />

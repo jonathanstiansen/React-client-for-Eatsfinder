@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserForm from "./UserForm";
 import User from "../requests/user";
+import Session from "../requests/session";
 
 class UserNewPage extends Component {
   constructor(props) {
@@ -11,8 +12,12 @@ class UserNewPage extends Component {
 
   createUser(params) {
     User.create(params).then(({ id }) => {
-      console.log("!!!!!", id);
-      this.props.history.push(`/welcome`);
+      Session.create({
+        email: params.email,
+        password: params.password
+      }).then(() => {
+        this.props.history.push("/welcome");
+      });
     });
   }
 

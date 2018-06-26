@@ -37,20 +37,28 @@ function ProviderForm(props) {
       </label>
       <br />
       <label htmlFor="email">Email</label>
-      <textarea cols="15" rows="1" name="email" defaultValue={props.email} />
-      <br />
-      <label htmlFor="phone_number">Phone_number</label>
-      <textarea
+      <input
         cols="15"
         rows="1"
+        type="email"
+        name="email"
+        defaultValue={props.email}
+      />
+      <br />
+      <label htmlFor="phone_number">Phone_number</label>
+      <input
+        cols="15"
+        rows="1"
+        type="tel"
         name="phone_number"
         defaultValue={props.phone_number}
       />
       <br />
       <label htmlFor="website">Website</label>
-      <textarea
+      <input
         cols="15"
         rows="1"
+        type="url"
         name="website"
         defaultValue={props.website}
       />

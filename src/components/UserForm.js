@@ -30,31 +30,37 @@ function UserForm(props) {
         defaultValue={props.user_name}
       />
       <br />
-      <label htmlFor="full_name">
-        Full Name
-        <textarea
-          cols="15"
-          rows="1"
-          name="full_name"
-          defaultValue={props.full_name}
-        />
-      </label>
-      <br />
-      <label htmlFor="email">Email</label>
-      <textarea cols="15" rows="1" name="email" defaultValue={props.email} />
-      <br />
-      <label htmlFor="password">password</label>
+      <label htmlFor="full_name">Full Name </label>
       <textarea
         cols="15"
         rows="1"
+        name="full_name"
+        defaultValue={props.full_name}
+      />
+      <br />
+      <label htmlFor="email">Email</label>
+      <input
+        cols="15"
+        rows="1"
+        name="email"
+        type="email"
+        defaultValue={props.email}
+      />
+      <br />
+      <label htmlFor="password">password</label>
+      <input
+        cols="15"
+        rows="1"
+        type="password"
         name="password"
         defaultValue={props.password}
       />
       <br />
       <label htmlFor="password_confirmation">Password Confirmation</label>
-      <textarea
+      <input
         cols="15"
         rows="1"
+        type="password"
         name="password_confirmation"
         defaultValue={props.password_confirmation}
       />

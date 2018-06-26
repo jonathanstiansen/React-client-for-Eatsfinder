@@ -15,7 +15,8 @@ export default {
     return fetch(`${BASE_URL}/providers`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(params)
+      body: JSON.stringify(params),
+      credentials: "include"
     }).then(response => response.json());
   },
   update(id, params) {

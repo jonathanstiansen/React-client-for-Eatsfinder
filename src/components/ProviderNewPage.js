@@ -10,6 +10,7 @@ class ProviderNewPage extends Component {
   }
 
   createProvider(params) {
+    console.log(params);
     Provider.create(params).then(({ id }) => {
       this.props.history.push(`/providers/${id}`);
     });

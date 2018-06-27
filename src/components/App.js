@@ -10,29 +10,32 @@ import DishIndexPage from "./DishIndexPage";
 import DishShowPage from "./DishShowPage";
 import UserNewPage from "./UserNewPage";
 import SignInPage from "./SignInPage";
+import { Authenticator, Authenticate } from "./Authenticator";
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <NavBar />
-          <Route path="/" component={WelcomePage} />
-          <Route exact path="/dishes" component={DishIndexPage} />
-          <Route exact path="/dishes/:id" component={DishShowPage} />
-          <Route exact path="/user/new" component={UserNewPage} />
-          <Route exact path="/session/new" component={SignInPage} />
-          <Switch>
-            <Route exact path="/providers" component={ProviderIndexPage} />
-            <Route exact path="/providers/new" component={ProviderNewPage} />
-            <Route exact path="/providers/:id" component={ProviderShowPage} />
-            <Route
-              path="/providers/update/:id"
-              component={ProviderUpdatePage}
-            />
-          </Switch>
-        </div>
-      </Router>
+      <Authenticator>
+        <Router>
+          <div className="App">
+            <Authenticate>{props => <NavBar auth={props} />}</Authenticate>
+            <Route path="/" component={WelcomePage} />
+            <Route exact path="/dishes" component={DishIndexPage} />
+            <Route exact path="/dishes/:id" component={DishShowPage} />
+            <Route exact path="/user/new" component={UserNewPage} />
+            <Route exact path="/session/new" component={SignInPage} />
+            <Switch>
+              <Route exact path="/providers" component={ProviderIndexPage} />
+              <Route exact path="/providers/new" component={ProviderNewPage} />
+              <Route exact path="/providers/:id" component={ProviderShowPage} />
+              <Route
+                path="/providers/update/:id"
+                component={ProviderUpdatePage}
+              />
+            </Switch>
+          </div>
+        </Router>
+      </Authenticator>
     );
   }
 }

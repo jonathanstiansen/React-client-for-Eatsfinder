@@ -19,5 +19,10 @@ export default {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(params)
     }).then(response => response.json());
+  },
+  current() {
+    return fetch(`${BASE_URL}/users/current`, {
+      credentials: "include"
+    }).then(response => response.json());
   }
 };

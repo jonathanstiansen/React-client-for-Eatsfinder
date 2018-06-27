@@ -2,8 +2,8 @@ import { BASE_URL } from "../config";
 //localhost:3000/v1/providers/134/dishes
 
 export default {
-  all() {
-    return fetch(`${BASE_URL}/dishes`, {
+  all(params = "") {
+    return fetch(`${BASE_URL}/dishes${params}`, {
       headers: { "Content-Type": "application/json" },
       credentials: "include"
     }).then(response => response.json());

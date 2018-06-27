@@ -12,15 +12,22 @@ function NavBar(props) {
 
   return (
     <nav className="NavBar">
-      <Link to="/">Home</Link>
-      <Link to="/dishes">Dishes</Link>
-      <Link to="/providers">Providers</Link>
-      <Link to="/providers/new">New Provider</Link>
-      <Link to="/user/new">Sign Up</Link>
-      <Link to="/session/new">Sign In</Link>
-      <a href="#" onClick={signOut}>
-        Sign Out
-      </a>
+      {auth.user === null ? (
+        <React.Fragment>
+          <Link to="/user/new">Sign Up</Link>
+          <Link to="/session/new">Sign In</Link>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Link to="/dishes">Dishes</Link>
+          <Link to="/providers">Providers</Link>
+          <Link to="/providers/new">New Provider</Link>
+
+          <a href="#" onClick={signOut}>
+            Sign Out
+          </a>
+        </React.Fragment>
+      )}
     </nav>
   );
 }

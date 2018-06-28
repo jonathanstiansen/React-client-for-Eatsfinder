@@ -26,7 +26,6 @@ class DishIndexPage extends Component {
     event.preventDefault();
     const { currentTarget } = event;
     const data = currentTarget.dataset.id;
-    console.log(data);
     Dish.all(data).then(dishes => {
       this.setState({
         loading: false,
@@ -34,23 +33,6 @@ class DishIndexPage extends Component {
       });
     });
   }
-
-  // handleClick(e) {
-  //   const { dishes } = this.state;
-  //   e.preventDefault();
-  //   this.props.history.push("dishes?filer_by=name");
-  //   this.setState({
-  //     dishes: dishes.filter(d => d.dish_type !== "Drink")
-  //   });
-  // }
-
-  // handleClick() {
-  //   const { dishes } = this.state;
-  //   this.setState(prevState => ({
-  //     isToggleOn: !prevState.isToggleOn,
-  //     dishes: dishes.filter(d => d.dish_type == "Drink")
-  //   }));
-  // }
 
   render() {
     const { loading } = this.state;

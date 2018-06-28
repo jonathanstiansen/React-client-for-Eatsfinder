@@ -3,8 +3,6 @@ import DishDetails from "./DishDetails";
 
 function DishList(props) {
   const { dishes = [], onDishDeleteClick = () => {} } = props;
-  console.log(dishes);
-  console.log(props);
 
   return (
     <ul>

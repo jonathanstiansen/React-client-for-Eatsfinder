@@ -23,9 +23,7 @@ function NavBar(props) {
           <Link to="/providers">Providers</Link>
           <Link to="/providers/new">New Provider</Link>
 
-          <a href="#" onClick={signOut}>
-            Sign Out
-          </a>
+          <a onClick={signOut}>Sign Out</a>
         </React.Fragment>
       )}
     </nav>

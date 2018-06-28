@@ -9,6 +9,7 @@ function ProviderDetails(props) {
       <p>{props.phone_number}</p>
       <p>{props.website}</p>
       <p>{props.address}</p>
+      <img src={props.image_url} />
     </div>
   );
 }

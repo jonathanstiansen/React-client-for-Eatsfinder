@@ -6,7 +6,6 @@ import Session from "../requests/session";
 class UserNewPage extends Component {
   constructor(props) {
     super(props);
-
     this.createUser = this.createUser.bind(this);
   }
 

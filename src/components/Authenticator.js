@@ -25,7 +25,6 @@ export class Authenticator extends Component {
     this.setState({ loading: true });
 
     return User.current().then(data => {
-      console.log(data.id);
       if (data.status !== 401) {
         this.setState({ loading: false, user: data });
       } else {

@@ -9,15 +9,16 @@ function ProviderForm(props) {
 
     const formData = new FormData(currentTarget);
 
-    onSubmit({
-      name: formData.get("name"),
-      description: formData.get("description"),
-      email: formData.get("email"),
-      phone_number: formData.get("phone_number"),
-      website: formData.get("website"),
-      address: formData.get("address")
-    });
+    // const toSend = {
+    //   name: formData.get("name"),
+    //   description: formData.get("description"),
+    //   email: formData.get("email"),
+    //   phone_number: formData.get("phone_number"),
+    //   website: formData.get("website"),
+    //   address: formData.get("address")
+    // };
 
+    onSubmit(formData);
     currentTarget.reset();
   };
 
@@ -70,6 +71,8 @@ function ProviderForm(props) {
         name="address"
         defaultValue={props.address}
       />
+      <br />
+      <input type="file" name="image" />
       <br />
       <input type="submit" value="Submit" />
     </form>

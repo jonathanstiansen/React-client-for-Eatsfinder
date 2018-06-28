@@ -8,8 +8,8 @@ class ProviderNewPage extends Component {
 
     this.createProvider = this.createProvider.bind(this);
   }
+
   createProvider(params) {
-    console.log(params);
     Provider.create(params).then(({ id }) => {
       this.props.history.push(`/providers/${id}`);
     });

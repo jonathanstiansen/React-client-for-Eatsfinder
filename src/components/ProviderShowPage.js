@@ -5,6 +5,7 @@ import DishList from "./DishList";
 import DishForm from "./DishForm";
 import Provider from "../requests/provider";
 import Dish from "../requests/dish";
+import Map from "./Map";
 
 class ProviderShowPage extends Component {
   constructor(props) {
@@ -22,7 +23,6 @@ class ProviderShowPage extends Component {
 
   componentDidMount() {
     const providerId = this.props.match.params.id;
-
     Provider.one(providerId).then(provider => {
       this.setState({
         provider: provider,
@@ -67,7 +67,6 @@ class ProviderShowPage extends Component {
 
   render() {
     const { provider, loading } = this.state;
-
     if (loading) {
       return (
         <main className="ProviderShowPage">
@@ -88,6 +87,7 @@ class ProviderShowPage extends Component {
           onDishDeleteClick={this.deleteDish}
         />
         <DishForm onSubmit={this.createDish} />
+        <Map {...provider} />
       </main>
     );
   }

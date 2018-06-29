@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DishDetails from "./DishDetails";
 import Dish from "../requests/dish";
+import DishMap from "./DishMap";
 
 class DishShowPage extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class DishShowPage extends Component {
     return (
       <main className="DishShowPage">
         <DishDetails {...dish} />
+        <DishMap {...dish} />
       </main>
     );
   }

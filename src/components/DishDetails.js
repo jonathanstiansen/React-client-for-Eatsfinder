@@ -5,7 +5,6 @@ function DishDetails(props) {
 
   return (
     <div className="DishDetails">
-      <p>id: {props.id}</p>
       <p>Name: {props.name}</p>
       <p>Dish type: {props.dish_type}</p>
       <p>Description: {props.description}</p>

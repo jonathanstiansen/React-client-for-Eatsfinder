@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Dish from "../requests/dish";
+import DishesMap from "./DishesMap";
 
 class DishIndexPage extends Component {
   constructor(props) {
@@ -77,6 +78,7 @@ class DishIndexPage extends Component {
             </li>
           ))}
         </ul>
+        <DishesMap dishes={this.state.dishes} />
       </main>
     );
   }

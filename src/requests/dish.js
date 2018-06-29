@@ -17,16 +17,16 @@ export default {
   create(id, params) {
     return fetch(`${BASE_URL}/providers/${id}/dishes`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(params),
+      enctype: "multipart/form-data",
+      body: params,
       credentials: "include"
     }).then(response => response.json());
   },
   update(id, params) {
     return fetch(`${BASE_URL}/dishes/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(params),
+      method: "POST",
+      enctype: "multipart/form-data",
+      body: params,
       credentials: "include"
     }).then(response => response.json());
   },

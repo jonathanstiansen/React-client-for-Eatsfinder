@@ -7,25 +7,6 @@ export class MapContainer extends Component {
     showingInfoWindow: true
   };
 
-  onMarkerClick = (props, marker, e) => {
-    console.log("click marker");
-
-    this.setState({
-      showingInfoWindow: true,
-      activeMarker: marker
-    });
-  };
-
-  onMapClicked = props => {
-    console.log("click map");
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
   render() {
     const Icon = require("./MarkerIcon.svg");
     return (
@@ -40,21 +21,79 @@ export class MapContainer extends Component {
           lng: this.props.longitude
         }}
         zoom={14}
-        onClick={this.onMapClicked}
+        styles={[
+          {
+            featureType: "administrative",
+            elementType: "geometry",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "administrative.land_parcel",
+            elementType: "labels",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "poi",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "poi",
+            elementType: "labels.text",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "road",
+            elementType: "labels.icon",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "road.local",
+            elementType: "labels",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "transit",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "water",
+            stylers: [
+              {
+                color: "#b1a0c3"
+              }
+            ]
+          }
+        ]}
       >
-        <Marker onClick={this.onMarkerClick} icon={Icon} />
-        <InfoWindow
-          position={{
-            lat: this.props.latitude + 0.002,
-            lng: this.props.longitude
-          }}
-          visible={this.state.showingInfoWindow}
-        >
-          <div>
-            <p>{this.props.name}</p>
-            <p>{this.props.address}</p>
-          </div>
-        </InfoWindow>
+        <Marker icon={Icon} />
       </Map>
     );
   }

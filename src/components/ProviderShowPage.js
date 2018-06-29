@@ -44,12 +44,13 @@ class ProviderShowPage extends Component {
     const { provider } = this.state;
 
     Dish.create(provider.id, dishParams).then(({ id }) => {
-      this.setState({
-        provider: {
-          ...provider,
-          dishes: [dishParams, ...provider.dishes]
-        }
-      });
+      window.location.reload();
+      // this.setState({
+      //   provider: {
+      //     ...provider,
+      //     dishes: [dishParams, ...provider.dishes]
+      //   }
+      // });
     });
   }
 

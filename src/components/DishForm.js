@@ -9,12 +9,7 @@ function DishForm(props) {
 
     const formData = new FormData(currentTarget);
 
-    onSubmit({
-      name: formData.get("name"),
-      dish_type: formData.get("dish_type"),
-      description: formData.get("description"),
-      price: formData.get("price")
-    });
+    onSubmit(formData);
 
     currentTarget.reset();
   };
@@ -33,21 +28,19 @@ function DishForm(props) {
         defaultValue={props.dish_type}
       />
       <br />
-      <label htmlFor="description">
-        Description
-        <textarea
-          cols="15"
-          rows="1"
-          name="description"
-          defaultValue={props.description}
-        />
-        <br />
-      </label>
-      <label htmlFor="price">
-        Price
-        <textarea cols="5" rows="1" name="price" defaultValue={props.price} />
-      </label>
-
+      <label htmlFor="description">Description</label>
+      <textarea
+        cols="15"
+        rows="1"
+        name="description"
+        defaultValue={props.description}
+      />
+      <br />
+      <label htmlFor="price">Price </label>
+      <textarea cols="5" rows="1" name="price" defaultValue={props.price} />
+      <br />
+      <input type="file" name="image" />
+      <br />
       <br />
       <input type="submit" value="Submit" />
     </form>

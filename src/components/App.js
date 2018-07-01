@@ -11,6 +11,7 @@ import DishShowPage from "./DishShowPage";
 import UserNewPage from "./UserNewPage";
 import SignInPage from "./SignInPage";
 import { Authenticator, Authenticate } from "./Authenticator";
+import AuthRoute from "./AuthRoute";
 
 class App extends Component {
   render() {
@@ -20,11 +21,16 @@ class App extends Component {
           <div className="App">
             <Authenticate>{props => <NavBar auth={props} />}</Authenticate>
             <Route path="/" component={WelcomePage} />
-            <Route exact path="/dishes" component={DishIndexPage} />
-            <Route exact path="/dishes/:id" component={DishShowPage} />
-            <Route exact path="/user/new" component={UserNewPage} />
-            <Route exact path="/session/new" component={SignInPage} />
             <Switch>
+              <AuthRoute
+                exact
+                redirect={false}
+                path="/session/new"
+                component={SignInPage}
+              />
+              <Route exact path="/user/new" component={UserNewPage} />
+              <AuthRoute Route exact path="/dishes" component={DishIndexPage} />
+              <Route exact path="/dishes/:id" component={DishShowPage} />
               <Route exact path="/providers" component={ProviderIndexPage} />
               <Route exact path="/providers/new" component={ProviderNewPage} />
               <Route exact path="/providers/:id" component={ProviderShowPage} />

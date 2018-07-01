@@ -43,17 +43,6 @@ export class MapContainer extends Component {
         onClick={this.onMapClicked}
       >
         <Marker onClick={this.onMarkerClick} icon={Icon} />
-        <InfoWindow
-          position={{
-            lat: this.props.latitude + 0.002,
-            lng: this.props.longitude
-          }}
-          visible={this.state.showingInfoWindow}
-        >
-          <div>
-            <p>{this.props.name}</p>
-          </div>
-        </InfoWindow>
       </Map>
     );
   }

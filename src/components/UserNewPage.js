@@ -15,7 +15,7 @@ class UserNewPage extends Component {
         email: params.email,
         password: params.password
       }).then(() => {
-        this.props.history.push("/welcome");
+        this.props.history.push("/");
       });
     });
   }

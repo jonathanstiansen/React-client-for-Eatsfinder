@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 
 function NavBar(props) {
   const { auth } = props;
-
   const signOut = event => {
     event.preventDefault();
-
     auth.signOut();
   };
 
@@ -22,7 +20,7 @@ function NavBar(props) {
           <Link to="/dishes">Dishes</Link>
           <Link to="/providers">Providers</Link>
           <Link to="/providers/new">New Provider</Link>
-
+          <span> Hi, {auth.user.user_name}! </span>
           <a onClick={signOut}>Sign Out</a>
         </React.Fragment>
       )}

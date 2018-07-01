@@ -9,15 +9,17 @@ class SignInPage extends Component {
 
   signIn(event) {
     event.preventDefault();
-    const { history } = this.props;
+    const { history, auth } = this.props;
     const formData = new FormData(event.currentTarget);
 
     Session.create({
       email: formData.get("email"),
       password: formData.get("password")
-    }).then(() => {
-      history.push("/");
-    });
+    })
+      .then(() => auth.reload())
+      .then(() => {
+        history.push("/");
+      });
   }
 
   render() {

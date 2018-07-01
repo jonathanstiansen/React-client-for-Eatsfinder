@@ -15,7 +15,6 @@ class DishIndexPage extends Component {
 
   componentDidMount() {
     Dish.all().then(dishes => {
-      console.log(this.props);
       this.setState({
         loading: false,
         dishes: dishes
@@ -37,6 +36,7 @@ class DishIndexPage extends Component {
 
   render() {
     const { loading } = this.state;
+    const { user } = this.props.auth;
     if (loading) {
       return (
         <main className="DishIndexPage">
@@ -74,11 +74,14 @@ class DishIndexPage extends Component {
         <ul style={{ padding: 0, listStyle: "none" }}>
           {this.state.dishes.map(dish => (
             <li key={dish.id}>
-              <Link to={`/dishes/${dish.id}`}>{dish.name}</Link>
+              <Link to={`/dishes/${dish.id}`}>
+                {dish.name}
+                <img src={dish.image_url} alt={dish.name} />
+              </Link>
             </li>
           ))}
         </ul>
-        <DishesMap dishes={this.state.dishes} />
+        <DishesMap user={user} dishes={this.state.dishes} />
       </main>
     );
   }

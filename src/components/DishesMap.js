@@ -18,7 +18,6 @@ export class MapContainer extends Component {
   };
 
   onMapClicked = props => {
-    console.log("click");
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -28,12 +27,12 @@ export class MapContainer extends Component {
   };
 
   linkToDish = e => {
-    console.log("click");
     this.props.history.push(`/providers`);
   };
 
   render() {
     const Icon = require("./MarkerIcon.svg");
+    const { user } = this.props;
     return (
       <Map
         google={this.props.google}
@@ -58,6 +57,13 @@ export class MapContainer extends Component {
             dish_id={dish.id}
           />
         ))}
+
+        <Marker
+          position={{
+            lat: user.latitude,
+            lng: user.longitude
+          }}
+        />
 
         <InfoWindow
           marker={this.state.activeMarker}

@@ -10,7 +10,8 @@ function ReviewForm(props) {
     const formData = new FormData(currentTarget);
 
     onSubmit({
-      body: formData.get("body")
+      body: formData.get("body"),
+      rating: formData.get("rating")
     });
 
     currentTarget.reset();
@@ -19,6 +20,7 @@ function ReviewForm(props) {
   return (
     <form onSubmit={handleSubmit} className="ReviewForm">
       <textarea cols="40" rows="4" name="body" /> <br />
+      <textarea cols="40" rows="1" name="rating" /> <br />
       <input type="submit" value="Submit" />
     </form>
   );

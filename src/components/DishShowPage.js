@@ -5,6 +5,7 @@ import Map from "./Map";
 import ReviewList from "./ReviewList";
 import ReviewForm from "./ReviewForm";
 import Review from "../requests/review";
+import Like from "../requests/like";
 
 class DishShowPage extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class DishShowPage extends Component {
 
     this.createReview = this.createReview.bind(this);
     this.deleteReview = this.deleteReview.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -55,6 +57,15 @@ class DishShowPage extends Component {
     });
   }
 
+  handleClick() {
+    const { dish } = this.state;
+    Like.create(dish.id).then(({ id }) => {
+      this.setState(prevState => ({
+        isToggleOn: !prevState.isToggleOn
+      }));
+    });
+  }
+
   render() {
     const { dish, loading } = this.state;
 
@@ -69,12 +80,15 @@ class DishShowPage extends Component {
     return (
       <main className="DishShowPage">
         <DishDetails {...dish} />
-        {/* <Map {...dish} /> */}
+        <button onClick={this.handleClick}>
+          {this.state.isToggleOn ? "unlike" : "like"}
+        </button>
         <ReviewList
           reviews={dish.reviews}
           onReviewDeleteClick={this.deleteReview}
         />
         <ReviewForm onSubmit={this.createReview} />
+        <Map {...dish} />
       </main>
     );
   }

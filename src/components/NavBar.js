@@ -21,6 +21,12 @@ function NavBar(props) {
           <Link to="/providers">Providers</Link>
           <Link to="/providers/new">New Provider</Link>
           <span> Hi, {auth.user.user_name}! </span>
+          <img
+            className="avatar"
+            border="5"
+            src={auth.user.image_url}
+            alt={auth.user.user_name}
+          />
           <a onClick={signOut}>Sign Out</a>
         </React.Fragment>
       )}

@@ -10,10 +10,13 @@ class UserNewPage extends Component {
   }
 
   createUser(params) {
-    User.create(params).then(({ id }) => {
+    User.create(params).then(({ id, email, password }) => {
+      console.log("!!!!!!!", id);
+      console.log(email);
+      console.log(password);
       Session.create({
-        email: params.email,
-        password: params.password
+        email: email,
+        password: password
       }).then(() => {
         this.props.history.push("/");
       });

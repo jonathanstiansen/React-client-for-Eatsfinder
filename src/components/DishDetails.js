@@ -6,6 +6,7 @@ function DishDetails(props) {
   return (
     <div className="DishDetails">
       <p>Name: {props.name}</p>
+      <p>likes :{props.likes_number}</p>
       <p>Dish type: {props.dish_type}</p>
       <p>Description: {props.description}</p>
       <p>Price: {props.price}</p>

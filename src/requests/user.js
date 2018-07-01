@@ -9,8 +9,8 @@ export default {
   create(params) {
     return fetch(`${BASE_URL}/users`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(params)
+      enctype: "multipart/form-data",
+      body: params
     }).then(response => response.json());
   },
   update(id, params) {

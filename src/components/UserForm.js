@@ -6,17 +6,8 @@ function UserForm(props) {
   const handleSubmit = event => {
     event.preventDefault();
     const { currentTarget } = event;
-
     const formData = new FormData(currentTarget);
-
-    onSubmit({
-      user_name: formData.get("user_name"),
-      full_name: formData.get("full_name"),
-      email: formData.get("email"),
-      password: formData.get("password"),
-      password_confirmation: formData.get("password_confirmation")
-    });
-
+    onSubmit(formData);
     currentTarget.reset();
   };
 
@@ -47,6 +38,9 @@ function UserForm(props) {
         defaultValue={props.email}
       />
       <br />
+      <label htmlFor="email">Zip/Postal Code</label>
+      <input type="address" cols="15" rows="1" name="address" />
+      <br />
       <label htmlFor="password">password</label>
       <input
         cols="15"
@@ -64,6 +58,8 @@ function UserForm(props) {
         name="password_confirmation"
         defaultValue={props.password_confirmation}
       />
+      <br />
+      <input type="file" name="image" />
       <br />
       <input type="submit" value="Submit" />
     </form>

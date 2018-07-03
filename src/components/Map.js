@@ -13,7 +13,7 @@ export class MapContainer extends Component {
       <Map
         google={this.props.google}
         style={{
-          width: "50%",
+          width: "43%",
           height: "50%"
         }}
         initialCenter={{
@@ -80,14 +80,6 @@ export class MapContainer extends Component {
             stylers: [
               {
                 visibility: "off"
-              }
-            ]
-          },
-          {
-            featureType: "water",
-            stylers: [
-              {
-                color: "#b1a0c3"
               }
             ]
           }

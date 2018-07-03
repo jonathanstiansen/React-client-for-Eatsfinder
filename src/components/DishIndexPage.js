@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Dish from "../requests/dish";
 import DishesMap from "./DishesMap";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Progress from "./Progress";
+import SimpleMediaCard from "./SimpleMediaCard";
 
 class DishIndexPage extends Component {
   constructor(props) {
@@ -17,10 +22,15 @@ class DishIndexPage extends Component {
     Dish.all().then(dishes => {
       this.setState({
         loading: false,
-        dishes: dishes
+        dishes: dishes,
+        value: 2
       });
     });
   }
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
 
   handleClick(event) {
     event.preventDefault();
@@ -40,48 +50,79 @@ class DishIndexPage extends Component {
     if (loading) {
       return (
         <main className="DishIndexPage">
-          <h2>Loading...</h2>
+          <div class="centered">
+            <Progress />
+          </div>
         </main>
       );
     }
     return (
       <main className="DishIndexPage">
-        <a data-id={""} onClick={this.handleClick}>
-          All
-        </a>
-        <a data-id={"?q[dish_type_eq]=breackfast"} onClick={this.handleClick}>
-          Breackfast
-        </a>
-        <a data-id={"?q[dish_type_eq]=lunch"} onClick={this.handleClick}>
-          Lunch
-        </a>
-        <a data-id={"?q[dish_type_eq]=brunch"} onClick={this.handleClick}>
-          Brunch
-        </a>
-        <a data-id={"?q[dish_type_eq]=dinner"} onClick={this.handleClick}>
-          Dinner
-        </a>
-        <a data-id={"?q[dish_type_eq]=dessert"} onClick={this.handleClick}>
-          Dessert
-        </a>
-        <a data-id={"?q[dish_type_eq]=snack"} onClick={this.handleClick}>
-          Snack
-        </a>
-        <a data-id={"?q[dish_type_eq]=drink"} onClick={this.handleClick}>
-          Drink
-        </a>
-
-        <ul style={{ padding: 0, listStyle: "none" }}>
-          {this.state.dishes.map(dish => (
-            <li key={dish.id}>
-              <Link to={`/dishes/${dish.id}`}>
-                {dish.name}
-                <img src={dish.image_url} alt={dish.name} />
-              </Link>
-            </li>
-          ))}
+        <Paper>
+          <Tabs
+            value={this.state.value}
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={this.handleChange}
+          >
+            <Tab data-id={""} onClick={this.handleClick} label="All" />
+            <Tab
+              data-id={"?q[dish_type_eq]=breackfast"}
+              onClick={this.handleClick}
+              label="Breackfast"
+            />
+            <Tab
+              data-id={"?q[dish_type_eq]=lunch"}
+              onClick={this.handleClick}
+              label="Lunch"
+            />
+            <Tab
+              data-id={"?q[dish_type_eq]=brunch"}
+              onClick={this.handleClick}
+              label="Brunch"
+            />
+            <Tab
+              data-id={"?q[dish_type_eq]=dinner"}
+              onClick={this.handleClick}
+              label="Dinner"
+            />
+            <Tab
+              data-id={"?q[dish_type_eq]=dessert"}
+              onClick={this.handleClick}
+              label="Dessert"
+            />
+            <Tab
+              data-id={"?q[dish_type_eq]=snack"}
+              onClick={this.handleClick}
+              label="Snack"
+            />
+            <Tab
+              data-id={"?q[dish_type_eq]=drink"}
+              onClick={this.handleClick}
+              label="Drink"
+            />
+          </Tabs>
+        </Paper>
+        <div class="dishContainerMap">
+          <DishesMap user={user} dishes={this.state.dishes} />
+        </div>
+        <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
+          <div className="dishContainer">
+            {this.state.dishes.map(dish => (
+              <div>
+                <li key={dish.id}>
+                  <Link to={`/dishes/${dish.id}`}>
+                    <SimpleMediaCard
+                      name={dish.name}
+                      price={dish.price}
+                      url={dish.image_url}
+                    />
+                  </Link>
+                </li>
+              </div>
+            ))}
+          </div>
         </ul>
-        <DishesMap user={user} dishes={this.state.dishes} />
       </main>
     );
   }

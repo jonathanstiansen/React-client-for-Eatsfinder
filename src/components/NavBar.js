@@ -10,6 +10,8 @@ function NavBar(props) {
 
   return (
     <nav className="NavBar">
+      {/* <a className="Nav-brand-logo" href="/" /> */}
+
       {auth.user === null ? (
         <React.Fragment>
           <Link to="/user/new">Sign Up</Link>
@@ -21,12 +23,12 @@ function NavBar(props) {
           <Link to="/providers">Providers</Link>
           <Link to="/providers/new">New Provider</Link>
           <span> Hi, {auth.user.user_name}! </span>
-          <img
+          {/* <img
             className="avatar"
             border="5"
             src={auth.user.image_url}
             alt={auth.user.user_name}
-          />
+          /> */}
           <a onClick={signOut}>Sign Out</a>
         </React.Fragment>
       )}

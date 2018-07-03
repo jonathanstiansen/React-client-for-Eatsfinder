@@ -5,7 +5,7 @@ function DishList(props) {
   const { dishes = [], onDishDeleteClick = () => {} } = props;
 
   return (
-    <ul>
+    <ul style={{ listStyle: "none", padding: 0 }}>
       {dishes.map(dish => (
         <li key={dish.id}>
           <DishDetails {...dish} onDeleteClick={onDishDeleteClick} />

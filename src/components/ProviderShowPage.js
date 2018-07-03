@@ -6,6 +6,11 @@ import DishForm from "./DishForm";
 import Provider from "../requests/provider";
 import Dish from "../requests/dish";
 import Map from "./Map";
+import Button from "@material-ui/core/Button";
+import Progress from "./Progress";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 class ProviderShowPage extends Component {
   constructor(props) {
@@ -19,6 +24,7 @@ class ProviderShowPage extends Component {
     this.deleteProvider = this.deleteProvider.bind(this);
     this.createDish = this.createDish.bind(this);
     this.deleteDish = this.deleteDish.bind(this);
+    this.tabHandleClick = this.tabHandleClick.bind(this);
   }
 
   componentDidMount() {
@@ -66,29 +72,65 @@ class ProviderShowPage extends Component {
     });
   }
 
+  tabHandleClick(event) {
+    this.props.history.push(`/providers`);
+  }
+
   render() {
     const { provider, loading } = this.state;
     if (loading) {
       return (
         <main className="ProviderShowPage">
-          <h2>Loading...</h2>
+          <div class="centered">
+            <Progress />
+          </div>
         </main>
       );
     }
 
     return (
       <main className="ProviderShowPage">
-        <ProviderDetails {...provider} />
-        <button onClick={this.deleteProvider}>Delete</button>
-        <button>
-          <Link to={`/providers/update/${this.providerId}`}>Edit</Link>
-        </button>
-        <DishList
-          dishes={provider.dishes}
-          onDishDeleteClick={this.deleteDish}
-        />
-        <DishForm onSubmit={this.createDish} />
-        <Map {...provider} />
+        <Paper>
+          <Tab onClick={this.tabHandleClick} label="< BACK" />
+        </Paper>
+
+        <div class="container_div">
+          <div style={{ padding: "5%" }}>
+            <DishList
+              dishes={provider.dishes}
+              onDishDeleteClick={this.deleteDish}
+            />
+            <DishForm onSubmit={this.createDish} />
+          </div>
+          <div>
+            <Paper style={{ padding: "5%" }}>
+              <img src={provider.image_url} alt={provider.name} />
+              <h1>{provider.name}</h1>
+              <h2>{provider.description}</h2>
+              <h3>{provider.phone_number}</h3>
+              <h3>{provider.website}</h3>
+              <h3>{provider.address}</h3>
+              <Button
+                variant="contained"
+                color="prrimary"
+                onClick={this.deleteProvider}
+              >
+                Delete
+              </Button>
+              &nbsp;
+              <Button variant="contained">
+                <Link to={`/providers/update/${this.providerId}`}>Edit</Link>
+              </Button>
+            </Paper>
+            <br />
+            <br />
+            <br />
+
+            <div style={{ borderRadius: "25px", padding: "5px" }}>
+              <Map {...provider} style={{ hight: "100px" }} />
+            </div>
+          </div>
+        </div>
       </main>
     );
   }

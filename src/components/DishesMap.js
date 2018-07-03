@@ -32,13 +32,14 @@ export class MapContainer extends Component {
 
   render() {
     const Icon = require("./MarkerIcon.svg");
+    const UserIcon = require("./user_icon.png");
     const { user } = this.props;
     return (
       <Map
         google={this.props.google}
         style={{
           width: "100%",
-          height: "50%"
+          height: "100%"
         }}
         initialCenter={{
           lat: 49.28206,
@@ -46,6 +47,69 @@ export class MapContainer extends Component {
         }}
         zoom={14}
         onClick={this.onMapClicked}
+        styles={[
+          {
+            featureType: "administrative",
+            elementType: "geometry",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "administrative.land_parcel",
+            elementType: "labels",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "poi",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "poi",
+            elementType: "labels.text",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "road",
+            elementType: "labels.icon",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "road.local",
+            elementType: "labels",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          },
+          {
+            featureType: "transit",
+            stylers: [
+              {
+                visibility: "off"
+              }
+            ]
+          }
+        ]}
       >
         {this.props.dishes.map(dish => (
           <Marker
@@ -59,6 +123,7 @@ export class MapContainer extends Component {
         ))}
 
         <Marker
+          icon={UserIcon}
           position={{
             lat: user.latitude,
             lng: user.longitude

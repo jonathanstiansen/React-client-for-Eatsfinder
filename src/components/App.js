@@ -20,7 +20,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <Authenticate>{props => <NavBar auth={props} />}</Authenticate>
-            <Route path="/" component={WelcomePage} />
+            {/* <AuthRoute path="/" component={WelcomePage} /> */}
             <Switch>
               <AuthRoute
                 exact

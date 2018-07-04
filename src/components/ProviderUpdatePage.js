@@ -25,6 +25,7 @@ class ProviderUpdatePage extends Component {
   }
 
   updateProvider(params) {
+    console.log(this.providerId);
     Provider.update(this.providerId, params).then(({ id }) => {
       this.props.history.push(`/providers/${id}`);
     });

@@ -42,8 +42,8 @@ export class MapContainer extends Component {
           height: "100%"
         }}
         initialCenter={{
-          lat: 49.28206,
-          lng: -123.111253
+          lat: user.latitude,
+          lng: user.longitude
         }}
         zoom={14}
         onClick={this.onMapClicked}
@@ -134,14 +134,9 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
         >
-          <div
-            onClick={() => {
-              alert("hello");
-            }}
-          >
+          <div>
             <a href={"/dishes/" + this.state.selectedPlace.dish_id}>
               {this.state.selectedPlace.name}
-              {this.state.selectedPlace.dish_id}
             </a>
           </div>
         </InfoWindow>

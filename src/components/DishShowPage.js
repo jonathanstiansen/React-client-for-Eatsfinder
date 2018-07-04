@@ -6,8 +6,9 @@ import ReviewList from "./ReviewList";
 import ReviewForm from "./ReviewForm";
 import Review from "../requests/review";
 import Like from "../requests/like";
+import Favorite from "../requests/favorite";
 import Progress from "./Progress";
-import Favorite from "./icons/Favorite";
+import FavoriteIcon from "./icons/Favorite";
 import TumbUp from "./icons/ThumbUp";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
@@ -28,6 +29,7 @@ class DishShowPage extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
+    this.providerBackClick = this.providerBackClick.bind(this);
   }
 
   componentDidMount() {
@@ -79,6 +81,14 @@ class DishShowPage extends Component {
     this.props.history.push(`/dishes/`);
   }
 
+  providerBackClick(event) {
+    const { history } = this.props;
+    event.preventDefault();
+    const { currentTarget } = event;
+    const id = currentTarget.dataset.id;
+    this.props.history.push(`/providers/${id}`);
+  }
+
   handleFavoriteClick() {
     const { dish } = this.state;
     Favorite.create(dish.id).then(({ id }) => {
@@ -107,13 +117,13 @@ class DishShowPage extends Component {
           <Tab onClick={this.handleBackClick} label="< BACK" />
         </Paper>
 
-        {/* <DishDetails {...dish} /> */}
-        {/* <button onClick={this.handleClick}>
+        {/* <DishDetails {...dish} /> 
+        <button onClick={this.handleClick}>
           {this.state.isToggleOn ? "unlike" : "like"}
         </button>
         <button onClick={this.handleFavoriteClick}>
           {this.state.isToggleOn ? "remove from favorites" : "add to Favorites"}
-        </button> */}
+        </button>*/}
         <div class="container_div">
           <div style={{ padding: "5%" }}>
             <img src={dish.image_url} alt={dish.name} />
@@ -122,13 +132,13 @@ class DishShowPage extends Component {
             </h2>
             <h3> {dish.description}</h3>
             <div class="center_div">
-              <div>
+              <div onClick={this.handleClick}>
                 <TumbUp />
               </div>
               <div> {dish.likes_number}</div>
               &nbsp; &nbsp;
               <div>
-                <Favorite />{" "}
+                <FavoriteIcon />
               </div>
               <div>{dish.favoris_number}</div>
             </div>
@@ -143,10 +153,16 @@ class DishShowPage extends Component {
             <Paper style={{ padding: "5%" }}>
               <img src={dish.provider_image_url} alt={dish.name} />
 
-              <h1>{dish.provider.name}</h1>
+              <h1>
+                <a data-id={dish.provider.id} onClick={this.providerBackClick}>
+                  {dish.provider.name}
+                </a>
+              </h1>
               <h2>{dish.provider.description}</h2>
               <h3>{dish.provider.phone_number}</h3>
-              <h3>{dish.provider.website}</h3>
+              <h3>
+                <a href="#">{dish.provider.website}</a>
+              </h3>
               <h3>{dish.provider.address}</h3>
             </Paper>
             <br />

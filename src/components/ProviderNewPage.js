@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ProviderForm from "./ProviderForm";
 import Provider from "../requests/provider";
+import Paper from "@material-ui/core/Paper";
 
 class ProviderNewPage extends Component {
   constructor(props) {
@@ -17,8 +18,14 @@ class ProviderNewPage extends Component {
 
   render() {
     return (
-      <main className="ProviderNewPage">
-        <h2>New Provider</h2>
+      <main
+        className="ProviderNewPage"
+        style={{
+          width: "700px",
+          marginTop: "20px",
+          marginLeft: "20%"
+        }}
+      >
         <ProviderForm onSubmit={this.createProvider} />
       </main>
     );

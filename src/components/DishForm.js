@@ -79,7 +79,7 @@ function DishForm(props) {
         <input type="file" name="image" />
         <br />
         <br />
-        <Button color="prrimary" variant="contained" type="submit">
+        <Button color="primary" variant="contained" type="submit">
           Submit
         </Button>
       </form>

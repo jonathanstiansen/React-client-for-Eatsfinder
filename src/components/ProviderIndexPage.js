@@ -87,11 +87,17 @@ class ProviderIndexPage extends Component {
                   <img
                     src={provider.image_url}
                     height={100}
+                    width={130}
                     alt={provider.name}
                   />
                 </div>
                 <div>
-                  <Link to={`/providers/${provider.id}`}>{provider.name}</Link>
+                  <Link
+                    style={{ color: "black" }}
+                    to={`/providers/${provider.id}`}
+                  >
+                    {provider.name}
+                  </Link>
                 </div>
                 <div>
                   <p>
@@ -107,7 +113,7 @@ class ProviderIndexPage extends Component {
                 <div>
                   <Button
                     data-id={provider.id}
-                    color="prrimary"
+                    color="primary"
                     variant="contained"
                   >
                     <Link to={`/providers/${provider.id}`}>Open</Link>
@@ -115,14 +121,14 @@ class ProviderIndexPage extends Component {
                   &nbsp;
                   <Button
                     data-id={provider.id}
-                    color="prrimary"
+                    color="primary"
                     variant="contained"
                   >
                     <Link to={`/providers/update/${provider.id}`}>Edit</Link>
                   </Button>{" "}
                   <Button
                     data-id={provider.id}
-                    color="prrimary"
+                    color="primary"
                     variant="contained"
                     onClick={this.deleteProvider}
                   >

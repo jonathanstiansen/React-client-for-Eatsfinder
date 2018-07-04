@@ -67,9 +67,9 @@ class DishIndexPage extends Component {
           >
             <Tab data-id={""} onClick={this.handleClick} label="All" />
             <Tab
-              data-id={"?q[dish_type_eq]=breackfast"}
+              data-id={"?q[dish_type_eq]=breakfast"}
               onClick={this.handleClick}
-              label="Breackfast"
+              label="Breakfast"
             />
             <Tab
               data-id={"?q[dish_type_eq]=lunch"}

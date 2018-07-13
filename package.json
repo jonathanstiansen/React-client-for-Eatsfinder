@@ -12,6 +12,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-swipeable-views": "^0.12.14",
+    "react-tippy": "^1.2.2",
     "reactstrap": "^6.2.0"
   },
   "scripts": {

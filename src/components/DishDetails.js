@@ -2,6 +2,7 @@ import React from "react";
 import Favorite from "./icons/Favorite";
 import TumbUp from "./icons/ThumbUp";
 import Button from "@material-ui/core/Button";
+import { Tooltip } from "react-tippy";
 
 function DishDetails(props) {
   const { onDeleteClick = () => {} } = props;
@@ -10,17 +11,19 @@ function DishDetails(props) {
     <div className="DishDetails">
       <img src={props.image_url} alt={props.name} />
       <h2>
-        {props.name} - ${props.price}
+        {props.name} ${props.price}
       </h2>
       <h3> {props.description}</h3>
       <div class="center_div">
         <div>
-          <TumbUp />
+          <Tooltip title="Welcome to React" position="top">
+            <TumbUp />
+          </Tooltip>
         </div>
         <div> {props.likes_number}</div>
         &nbsp; &nbsp;
         <div>
-          <Favorite />
+          <Favorite />{" "}
         </div>
         <div>{props.favoris_number}</div>
       </div>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ProviderDetails from "./ProviderDetails";
 import DishList from "./DishList";
 import DishForm from "./DishForm";
 import Provider from "../requests/provider";
@@ -9,7 +8,6 @@ import Map from "./Map";
 import Button from "@material-ui/core/Button";
 import Progress from "./Progress";
 import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 class ProviderShowPage extends Component {

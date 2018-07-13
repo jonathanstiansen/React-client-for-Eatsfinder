@@ -58,6 +58,24 @@ body {
   background-color: lightblue;
 }
 
+.NavBar > * {
+  padding: 7.5px 5px;
+}
+
+.NavBar > *:first-child {
+  margin-left: auto;
+}
+
+.Nav-brand-logo {
+  display: block;
+  background-repeat: no-repeat;
+  height: 35px;
+  width: 176px;
+  text-indent: -1000%;
+  width: 50px;
+  height: 50px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -102,6 +120,10 @@ body {
 .container_div > div a {
   text-decoration: none;
   color: black;
+}
+.container_div > div a:hover {
+  text-decoration: none;
+  color: blue;
 }
 
 .container_div > div ul li {
@@ -198,6 +220,11 @@ body {
   font-weight: 100;
 }
 
+.SignInPage h1 {
+  padding-left: 15%;
+  font-weight: 100;
+}
+
 .newProvierForm {
   margin: 0;
   padding: 0;
@@ -259,4 +286,9 @@ body {
 
 img {
   max-width: 500px;
+}
+
+.infoWindow a {
+  text-decoration: none;
+  color: black;
 }

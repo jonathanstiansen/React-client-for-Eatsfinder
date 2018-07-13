@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ProviderForm from "./ProviderForm";
 import Provider from "../requests/provider";
-import Paper from "@material-ui/core/Paper";
 
 class ProviderNewPage extends Component {
   constructor(props) {

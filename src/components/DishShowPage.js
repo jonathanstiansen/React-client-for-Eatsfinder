@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DishDetails from "./DishDetails";
 import Dish from "../requests/dish";
 import Map from "./Map";
 import ReviewList from "./ReviewList";
@@ -11,7 +10,6 @@ import Progress from "./Progress";
 import FavoriteIcon from "./icons/Favorite";
 import TumbUp from "./icons/ThumbUp";
 import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { relative } from "path";
 
@@ -58,7 +56,6 @@ class DishShowPage extends Component {
 
   deleteReview(id) {
     const { dish } = this.state;
-    console.log(id);
     Review.delete(id).then(({ id }) => {});
     this.setState({
       dish: {
@@ -82,7 +79,6 @@ class DishShowPage extends Component {
   }
 
   providerBackClick(event) {
-    const { history } = this.props;
     event.preventDefault();
     const { currentTarget } = event;
     const id = currentTarget.dataset.id;
@@ -161,7 +157,7 @@ class DishShowPage extends Component {
               <h2>{dish.provider.description}</h2>
               <h3>{dish.provider.phone_number}</h3>
               <h3>
-                <a href="#">{dish.provider.website}</a>
+                <a>{dish.provider.website}</a>
               </h3>
               <h3>{dish.provider.address}</h3>
             </Paper>

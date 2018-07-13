@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./NavBar";
-import WelcomePage from "./WelcomePage";
 import ProviderIndexPage from "./ProviderIndexPage";
 import ProviderShowPage from "./ProviderShowPage";
 import ProviderNewPage from "./ProviderNewPage";
@@ -20,7 +19,6 @@ class App extends Component {
         <Router>
           <div className="App">
             <Authenticate>{props => <NavBar auth={props} />}</Authenticate>
-            {/* <AuthRoute path="/" component={WelcomePage} /> */}
             <Switch>
               <AuthRoute
                 exact

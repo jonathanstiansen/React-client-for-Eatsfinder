@@ -8,7 +8,7 @@ export class MapContainer extends Component {
   };
 
   render() {
-    const Icon = require("./MarkerIcon.svg");
+    const Icon = require("./icons/markerIcon.svg");
     return (
       <Map
         google={this.props.google}

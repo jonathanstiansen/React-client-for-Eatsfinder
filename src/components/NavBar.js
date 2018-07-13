@@ -21,6 +21,7 @@ function NavBar(props) {
         {auth.user === null ? (
           <React.Fragment>
             <Link to="/user/new">Sign Up</Link>
+            &nbsp;
             <Link to="/session/new">Sign In</Link>
           </React.Fragment>
         ) : (

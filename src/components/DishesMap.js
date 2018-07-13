@@ -26,13 +26,13 @@ export class MapContainer extends Component {
     }
   };
 
-  linkToDish = e => {
+  linkToDish = () => {
     this.props.history.push(`/providers`);
   };
 
   render() {
-    const Icon = require("./MarkerIcon.svg");
-    const UserIcon = require("./user_icon.png");
+    const Icon = require("./icons/markerIcon.svg");
+    const UserIcon = require("./icons/userIcon.png");
     const { user } = this.props;
     return (
       <Map

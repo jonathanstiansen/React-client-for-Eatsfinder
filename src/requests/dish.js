@@ -17,6 +17,7 @@ export default {
   create(id, params) {
     return fetch(`${BASE_URL}/providers/${id}/dishes`, {
       method: "POST",
+
       enctype: "multipart/form-data",
       body: params,
       credentials: "include"

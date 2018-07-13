@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ProviderForm from "./ProviderForm";
 import Provider from "../requests/provider";
+import Progress from "./Progress";
 
 class ProviderUpdatePage extends Component {
   constructor(props) {
@@ -25,7 +26,6 @@ class ProviderUpdatePage extends Component {
   }
 
   updateProvider(params) {
-    console.log(this.providerId);
     Provider.update(this.providerId, params).then(({ id }) => {
       this.props.history.push(`/providers/${id}`);
     });
@@ -37,12 +37,14 @@ class ProviderUpdatePage extends Component {
     if (loading) {
       return (
         <main className="ProviderUpdatePage">
-          <h2>Loading...</h2>
+          <div class="centered">
+            <Progress />
+          </div>
         </main>
       );
     }
     return (
-      <main className="ProviderUpdatePage">
+      <main classNzame="ProviderUpdatePage">
         <h2>Update Provider</h2>
         <ProviderForm {...provider} onSubmit={this.updateProvider} />
       </main>
@@ -51,3 +53,4 @@ class ProviderUpdatePage extends Component {
 }
 
 export default ProviderUpdatePage;
+

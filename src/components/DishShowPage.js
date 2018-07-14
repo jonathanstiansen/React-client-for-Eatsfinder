@@ -12,6 +12,7 @@ import TumbUp from "./icons/ThumbUp";
 import Paper from "@material-ui/core/Paper";
 import Tab from "@material-ui/core/Tab";
 import { relative } from "path";
+import { Tooltip } from "react-tippy";
 
 class DishShowPage extends Component {
   constructor(props) {
@@ -19,7 +20,9 @@ class DishShowPage extends Component {
 
     this.state = {
       loading: true,
-      dish: null
+      dish: null,
+      like: null,
+      favoris: null
     };
 
     this.createReview = this.createReview.bind(this);
@@ -36,7 +39,9 @@ class DishShowPage extends Component {
     Dish.one(dishId).then(dish => {
       this.setState({
         dish: dish,
-        loading: false
+        loading: false,
+        like: dish.likes_number,
+        favoris: dish.favoris_number
       });
     });
   }
@@ -68,9 +73,9 @@ class DishShowPage extends Component {
   handleClick() {
     const { dish } = this.state;
     Like.create(dish.id).then(({ id }) => {
-      this.setState(prevState => ({
-        isToggleOn: !prevState.isToggleOn
-      }));
+      this.setState({
+        like: dish.likes_number + 1
+      });
     });
   }
 
@@ -87,16 +92,15 @@ class DishShowPage extends Component {
 
   handleFavoriteClick() {
     const { dish } = this.state;
+
     Favorite.create(dish.id).then(({ id }) => {
-      this.setState(prevState => ({
-        isToggleOn: !prevState.isToggleOn
-      }));
+      this.setState({
+        favoris: dish.favoris_number + 1
+      });
     });
   }
-
   render() {
     const { dish, loading } = this.state;
-
     if (loading) {
       return (
         <main className="DishShowPage">
@@ -112,14 +116,6 @@ class DishShowPage extends Component {
         <Paper>
           <Tab onClick={this.handleBackClick} label="< BACK" />
         </Paper>
-
-        {/* <DishDetails {...dish} /> 
-        <button onClick={this.handleClick}>
-          {this.state.isToggleOn ? "unlike" : "like"}
-        </button>
-        <button onClick={this.handleFavoriteClick}>
-          {this.state.isToggleOn ? "remove from favorites" : "add to Favorites"}
-        </button>*/}
         <div class="container_div">
           <div style={{ padding: "5%" }}>
             <img src={dish.image_url} alt={dish.name} />
@@ -129,14 +125,18 @@ class DishShowPage extends Component {
             <h3> {dish.description}</h3>
             <div class="center_div">
               <div onClick={this.handleClick}>
-                <TumbUp />
+                <Tooltip title={dish.likers} position="top">
+                  <TumbUp />
+                </Tooltip>
               </div>
-              <div> {dish.likes_number}</div>
+              <div> {this.state.like}</div>
               &nbsp; &nbsp;
-              <div>
-                <FavoriteIcon />
+              <div onClick={this.handleFavoriteClick}>
+                <Tooltip title={dish.favoris} position="top">
+                  <FavoriteIcon />
+                </Tooltip>
               </div>
-              <div>{dish.favoris_number}</div>
+              <div>{this.state.favoris}</div>
             </div>
             <br />
             <ReviewForm onSubmit={this.createReview} />
@@ -150,14 +150,19 @@ class DishShowPage extends Component {
               <img src={dish.provider_image_url} alt={dish.name} />
 
               <h1>
-                <a data-id={dish.provider.id} onClick={this.providerBackClick}>
-                  {dish.provider.name}
-                </a>
+                <Tooltip title="Check it out the menu" position="top">
+                  <a
+                    data-id={dish.provider.id}
+                    onClick={this.providerBackClick}
+                  >
+                    {dish.provider.name}
+                  </a>
+                </Tooltip>
               </h1>
               <h2>{dish.provider.description}</h2>
               <h3>{dish.provider.phone_number}</h3>
               <h3>
-                <a>{dish.provider.website}</a>
+                <a href="#">{dish.provider.website}</a>
               </h3>
               <h3>{dish.provider.address}</h3>
             </Paper>

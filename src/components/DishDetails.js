@@ -23,7 +23,7 @@ function DishDetails(props) {
         <div> {props.likes_number}</div>
         &nbsp; &nbsp;
         <div>
-          <Favorite />{" "}
+          <Favorite />
         </div>
         <div>{props.favoris_number}</div>
       </div>

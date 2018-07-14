@@ -10,8 +10,8 @@ function NavBar(props) {
 
   return (
     <nav className="NavBar">
-      <div class="plate">
-        <p class="script">
+      <div className="plate">
+        <p className="script">
           <span>Eats Finder</span>
         </p>
       </div>

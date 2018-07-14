@@ -13,7 +13,8 @@ class DishIndexPage extends Component {
     super(props);
     this.state = {
       loading: true,
-      dishes: []
+      dishes: [],
+      value: 0
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -50,7 +51,7 @@ class DishIndexPage extends Component {
     if (loading) {
       return (
         <main className="DishIndexPage">
-          <div class="centered">
+          <div className="centered">
             <Progress />
           </div>
         </main>
@@ -103,14 +104,14 @@ class DishIndexPage extends Component {
             />
           </Tabs>
         </Paper>
-        <div class="dishContainerMap">
+        <div className="dishContainerMap">
           <DishesMap user={user} dishes={this.state.dishes} />
         </div>
         <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
           <div className="dishContainer">
             {this.state.dishes.map(dish => (
-              <div>
-                <li key={dish.id}>
+              <div key={dish.id}>
+                <li>
                   <Link to={`/dishes/${dish.id}`}>
                     <SimpleMediaCard
                       name={dish.name}

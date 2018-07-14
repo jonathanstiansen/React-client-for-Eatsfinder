@@ -104,7 +104,7 @@ class DishShowPage extends Component {
     if (loading) {
       return (
         <main className="DishShowPage">
-          <div class="centered">
+          <div className="centered">
             <Progress />
           </div>
         </main>
@@ -116,14 +116,14 @@ class DishShowPage extends Component {
         <Paper>
           <Tab onClick={this.handleBackClick} label="< BACK" />
         </Paper>
-        <div class="container_div">
+        <div className="container_div">
           <div style={{ padding: "5%" }}>
             <img src={dish.image_url} alt={dish.name} />
             <h2>
               {dish.name} - ${dish.price}
             </h2>
             <h3> {dish.description}</h3>
-            <div class="center_div">
+            <div className="center_div">
               <div onClick={this.handleClick}>
                 <Tooltip title={dish.likers} position="top">
                   <TumbUp />
@@ -162,7 +162,7 @@ class DishShowPage extends Component {
               <h2>{dish.provider.description}</h2>
               <h3>{dish.provider.phone_number}</h3>
               <h3>
-                <a href="#">{dish.provider.website}</a>
+                <a>{dish.provider.website}</a>
               </h3>
               <h3>{dish.provider.address}</h3>
             </Paper>
